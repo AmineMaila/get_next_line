@@ -6,7 +6,7 @@
 /*   By: mmaila <mmaila@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:35:46 by mmaila            #+#    #+#             */
-/*   Updated: 2023/11/23 11:42:35 by mmaila           ###   ########.fr       */
+/*   Updated: 2023/11/23 13:16:44 by mmaila           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*chyatacheck(char *chyata, char **readbuf)
 		ft_strcpy(*readbuf, chyata);
 	else
 	{
-		chyata = malloc(BUFFER_SIZE + 1);
+		chyata = malloc((size_t)(BUFFER_SIZE) + 1);
 		if (!chyata)
 		{
 			free(*readbuf);
@@ -114,9 +114,9 @@ char	*get_next_line(int fd)
 	char		*readbuf;
 	char		*buf;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	readbuf = malloc(BUFFER_SIZE + 1);
+	readbuf = malloc((size_t)(BUFFER_SIZE) + 1);
 	if (!readbuf || read(fd, readbuf, 0) == -1)
 	{
 		if (readbuf)
